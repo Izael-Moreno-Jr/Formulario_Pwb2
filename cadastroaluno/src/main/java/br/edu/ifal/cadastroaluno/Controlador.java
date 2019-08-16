@@ -1,5 +1,6 @@
 package br.edu.ifal.cadastroaluno;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,17 @@ public class Controlador{
         if(opcao.isPresent()){
             Aluno aluno = opcao.get();
             retorno.addObject("aluno", aluno);
+            return retorno;
+        }
+        return retorno;
+    }
+
+    @RequestMapping("/buscar_aluno")
+    public ModelAndView buscar_aluno(String nome){
+        ModelAndView retorno = new ModelAndView("tabela.html");
+        List<Aluno> alunos = alunoRepo.findByNomeContaining(nome);
+        if(!alunos.isEmpty()){
+            retorno.addObject("alunos", alunos);
             return retorno;
         }
         return retorno;

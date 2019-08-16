@@ -8,17 +8,24 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <style>
-        
+        .ancor{
+            color: white;
+            font-size: 120%;
+        }
     </style>
 
     
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg nnavbar-primary bg-danger">
+            <a class="navbar-brand ancor" href="/"> <button type="button" class="btn btn-danger"> Ifal - Campus Rio Largo </button> </a>
+        </nav>
         <div class="container">
             <h1 style="text-align: center">Formulario</h1>
                 <form method="POST" action="/aluno_cadastrado">
                     <div class="form-group">
-                        <input type="hidden" class="form-control" name="id" th:value="${aluno.id}" disabled>
+                        
+                        <input type="number" class="form-control" name="id" id="id" th:value="${aluno.id}" style="display: none">
                     </div>
                     <div class="form-group">
                         <label for="nome">Nome</label>
@@ -101,9 +108,8 @@
                         <span class="msg-erro msg-senha2" style="display: none">O campo é obritatório</span>
                     </div>
                 
-                    <button type="submit" class="btn btn-primary mb-2" onclick="valida()">Enviar</button>
-                    <button type="reset" class="btn btn-primary mb-2">Reset</button>
-                    <a href="listar_alunos"> <button type="button" class="btn btn-primary mb-2"> lista de alunos  </button> </a>
+                    <button type="submit" class="btn btn-danger mb-2" onclick="valida()">Enviar</button>
+                    <a href="listar_alunos"> <button type="button" class="btn btn-danger mb-2"> lista de alunos  </button> </a>
 
 
                     <p th:text="${mensagem}"></p>

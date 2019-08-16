@@ -11,15 +11,26 @@ layout:decorate="layout">
         .container{
             border: 1px solid black;
         }
+        
+        .btn-submit{
+          
+          margin-right: 50%;
+            color: white;
+        }
         .ancor{
             color: white;
             font-size: 120%;
         }
     </style>
+
     </head>
     <body class="">
         <nav class="navbar navbar-expand-lg nnavbar-primary bg-danger">
-            <a class="navbar-brand ancor" href="/">Ifal - Campus Rio Largo</a>
+            <a class="navbar-brand ancor" href="/"> <button type="button" class="btn btn-danger"> Ifal - Campus Rio Largo </button> </a>
+            <form class="form-inline" method="POST" action="/buscar_aluno">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nome" id="search">
+              <button class="btn btn-default my-2 my-sm-0" type="submit">Buscar</button> 
+          </form>
         </nav>
         <div class="container">
             <h1 style="text-align: center">Lista de Alunos Cadastrados </h1>
@@ -30,7 +41,7 @@ layout:decorate="layout">
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         <th scope="col">CPF</th>
-                        <th scope="col"></th>
+                        <th scope="col">Sexo</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -39,11 +50,15 @@ layout:decorate="layout">
                         <td th:text="${alunos.nome}"></td>
                         <td th:text="${alunos.email}"></td>
                         <td th:text="${alunos.cpf}"></td>
-                        <td> <a th:href="@{'/excluir_aluno/' + ${alunos.id}}"> excluir </a>  </td>
-                        <td> <a th:href="@{'/atualizar_alunoS/' + ${alunos.id}}"> atualizar </a>  </td>
+                        <td th:text="${alunos.sexo}"></td>
+                        <td> <a th:href="@{'/excluir_aluno/' + ${alunos.id}}"> Excluir </a>  </td>
+                        <td> <a th:href="@{'/atualizar_aluno/' + ${alunos.id}}"> Atualizar </a>  </td>
                       </tr>
                     </tbody>
             </table>
+            <a href="formulario"> <button type="button" class="btn btn-danger mb-2"> cadastrar novo aluno  </button> </a>
+            <a href="listar_alunos"> <button type="button" class="btn btn-danger mb-2"> lista de alunos  </button> </a>
         </div>
+        
     </body>
 </html>
